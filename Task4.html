@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            background-image:url('https://img.freepik.com/premium-vector/blank-math-template-with-math-tools-elements_1639-27262.jpg?w=2000');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+        }
+        .calculator {
+            width: 400px;
+            background-color:rgb(101, 146, 206);
+            border-radius: 20px;
+            box-shadow: 0 2px 5px rgba(73, 69, 69, 0.1);
+            margin: 100px auto;
+        }
+        .display {
+            width: 100%;
+            height: 100px;
+            font-size: 36px;
+            text-align: right;
+            padding: 10px;
+            box-sizing: border-box;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            background-color:whitesmoke;
+            color: #0f0e0e;
+            position: relative;
+        }
+        .display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background-color:rgb(101, 146, 206);
+        }
+        .display span {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+        }
+        .keys {
+            display: grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap: 12px;
+            padding: 10px;
+            background-color:rgb(101, 146, 206);
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+        .key {
+            background-color:whitesmoke;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .key:active {
+            background-color:#7a98eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <span id="result"></span>
+        </div>
+        <div class="keys">
+            <div class="key" onclick="appendNumber(7)">7</div>
+            <div class="key" onclick="appendNumber(8)">8</div>
+            <div class="key" onclick="appendNumber(9)">9</div>
+            <div class="key operator" onclick="appendOperator('/')">/</div>
+            <div class="key" onclick="appendNumber(4)">4</div>
+            <div class="key" onclick="appendNumber(5)">5</div>
+            <div class="key" onclick="appendNumber(6)">6</div>
+            <div class="key operator" onclick="appendOperator('*')">*</div>
+            <div class="key" onclick="appendNumber(1)">1</div>
+            <div class="key" onclick="appendNumber(2)">2</div>
+            <div class="key" onclick="appendNumber(3)">3</div>
+            <div class="key operator" onclick="appendOperator('-')">-</div>
+            <div class="key" onclick="appendNumber(0)">0</div>
+            <div class="key" onclick="appendOperator('.')">.</div>
+            <div class="key operator" onclick="calculate()">=</div>
+            <div class="key operator" onclick="appendOperator('+')">+</div>
+        </div>
+    <script>
+        function appendNumber(num) {
+            document.getElementById('result').innerText += num;
+        }
+        function appendOperator(operator) {
+            document.getElementById('result').innerText += operator;
+        }
+        function calculate() {
+            var result = eval(document.getElementById('result').innerText);
+            document.getElementById('result').innerText = result;
+        }
+    </script>
+</body>
+</html>
