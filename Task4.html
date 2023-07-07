@@ -91,6 +91,8 @@
             <div class="key" onclick="appendOperator('.')">.</div>
             <div class="key operator" onclick="calculate()">=</div>
             <div class="key operator" onclick="appendOperator('+')">+</div>
+            <div class="key ac" onclick="clearResult()">AC</div>
+            <div class="key del" onclick="deleteLast()">DEL</div>
         </div>
     <script>
         function appendNumber(num) {
@@ -102,6 +104,13 @@
         function calculate() {
             var result = eval(document.getElementById('result').innerText);
             document.getElementById('result').innerText = result;
+        }
+         function clearResult() {
+            document.getElementById('result').innerText = '';
+        }
+        function deleteLast() {
+            var result = document.getElementById('result').innerText;
+            document.getElementById('result').innerText = result.slice(0, -1);
         }
     </script>
 </body>
